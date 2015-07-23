@@ -44,6 +44,22 @@ $ npm install -g bower
 To start with MEAN install the `mean-cli` package from NPM.
 This will add the *mean* command which lets you interact (install, manage, update ...) your Mean based application.
 
+## EARL's special notes:
+
+npm fails git download due to proxy blocking 'git' protocol. Use https instead:
+```
+git config --global url."https://".insteadOf git://
+```
+Install and run. If SSL blocks a file to download, just download it using browser and copy to the target directory in the logs. On next run of npm install, it will be seen and not downloaded again.
+ 
+```bash
+$ npm install -g mean-cli
+$ cd <myApp> 
+$ npm install --verbose
+$ node server
+```
+
+
 ### Install the MEAN CLI
 
 ```bash
