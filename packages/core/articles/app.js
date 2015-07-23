@@ -26,7 +26,7 @@ Articles.register(function(app, auth, database, circles, swagger) {
     'link': 'all articles'
   });
   Articles.menus.add({
-    'roles': ['authenticated'],
+	'roles': ['contributor','superadmin'],
     'title': 'Create New Article',
     'link': 'create article'
   });

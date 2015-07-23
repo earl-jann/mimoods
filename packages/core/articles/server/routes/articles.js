@@ -26,12 +26,13 @@ module.exports = function(Articles, app, auth) {
   var articles = require('../controllers/articles')(Articles);
 
   app.route('/api/articles')
-    .get(articles.all)
-    .post(auth.requiresLogin, hasPermissions, articles.create);
+  .get(articles.all)
+  .post(auth.requiresLogin, hasPermissions, articles.create);
+  
   app.route('/api/articles/:articleId')
-    .get(auth.isMongoId, articles.show)
-    .put(auth.isMongoId, auth.requiresLogin, hasAuthorization, hasPermissions, articles.update)
-    .delete(auth.isMongoId, auth.requiresLogin, hasAuthorization, articles.destroy);
+  .get(auth.isMongoId, articles.show)
+  .put(auth.isMongoId, auth.requiresLogin, hasAuthorization, hasPermissions, articles.update)
+  .delete(auth.isMongoId, auth.requiresLogin, hasAuthorization, articles.destroy);
 
   // Finish with setting up the articleId param
   app.param('articleId', articles.article);

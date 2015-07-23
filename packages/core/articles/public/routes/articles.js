@@ -38,8 +38,9 @@ angular.module('mean.articles').config(['$stateProvider',
         templateUrl: '/articles/views/view.html',
         resolve: {
           loggedin: function(MeanUser) {
-            return 1;
-            //return MeanUser.checkLoggedin();
+        	  // no need for logging in if viewing an article
+            return true;
+//            return MeanUser.checkLoggedin();
           }
         }
       });
