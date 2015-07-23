@@ -51,7 +51,7 @@ npm fails git download due to proxy blocking 'git' protocol. Use https instead:
 git config --global url."https://".insteadOf git://
 ```
 Install and run. If SSL blocks a file to download, just download it using browser and copy to the target directory in the logs. On next run of npm install, it will be seen and not downloaded again.
- 
+  
 ```bash
 $ npm install -g mean-cli
 $ cd <myApp> 
@@ -59,7 +59,11 @@ $ npm install --verbose
 $ node server
 ```
 
-
+## Install Lumen theme
+```
+$ bower install bootswatch-dist#3.3.5-lumen
+```
+copy bower_components\bootswatch-dist to replace bower_components\bootstrap\dist 
 ### Install the MEAN CLI
 
 ```bash
