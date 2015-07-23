@@ -7,9 +7,10 @@
 	    	<div class="col-sm-4">
 	    		<div class="panel panel-default">
 				    <div class="panel-heading">
-					    <h2>
+					    <h2 class="article_title">
 						    <a data-ng-href="/articles/{{article._id}}">{{article.title}}</a>
-					      	<span data-ng-if="hasAuthorization(article)">
+					      	<br />
+							<span data-ng-if="hasAuthorization(article)">
 					          <a class="btn" href="/articles/{{article._id}}/edit">
 					            <i class="glyphicon glyphicon-edit"></i>
 					          </a>
@@ -19,10 +20,13 @@
 					        </span>
 				      	</h2>
 			      	</div>
-			    	<div class="panel-body">{{article.content}}</div>
+					<br />
+			    	<div class="article_body">{{article.content}}</div>
+					<br />
 			    	<div class="panel-footer">
 					    <span>{{article.created | date:'medium'}}</span> /
 					    <span>{{article.user.name}}</span>
+						<span></span>
 				    </div>
 		    	</div>
 			</div>
