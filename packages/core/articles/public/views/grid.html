@@ -1,23 +1,30 @@
 <section data-ng-controller="ArticlesController" data-ng-init="find()">
+
   <div class="container-fluid">
   	<div class="row">
   		<div data-ng-repeat="article in articles">
 			<div ng-if="$index % 3 == 0" class="clearfix"></div>
-		    	<div class="col-sm-4"> 
-			    <span>{{article.created | date:'medium'}}</span> /
-			    <span>{{article.user.name}}</span>
-			    <h2>
-			    <a data-ng-href="/articles/{{article._id}}">{{article.title}}</a>
-		      	<span data-ng-if="hasAuthorization(article)">
-		          <a class="btn" href="/articles/{{article._id}}/edit">
-		            <i class="glyphicon glyphicon-edit"></i>
-		          </a>
-		          <a class="btn" data-ng-click="remove(article);">
-		            <i class="glyphicon glyphicon-trash"></i>
-		          </a>
-		        </span>
-		      	</h2>
-			    <div>{{article.content}}</div>
+	    	<div class="col-sm-4">
+	    		<div class="panel panel-default">
+				    <div class="panel-heading">
+					    <h2>
+						    <a data-ng-href="/articles/{{article._id}}">{{article.title}}</a>
+					      	<span data-ng-if="hasAuthorization(article)">
+					          <a class="btn" href="/articles/{{article._id}}/edit">
+					            <i class="glyphicon glyphicon-edit"></i>
+					          </a>
+					          <a class="btn" data-ng-click="remove(article);">
+					            <i class="glyphicon glyphicon-trash"></i>
+					          </a>
+					        </span>
+				      	</h2>
+			      	</div>
+			    	<div class="panel-body">{{article.content}}</div>
+			    	<div class="panel-footer">
+					    <span>{{article.created | date:'medium'}}</span> /
+					    <span>{{article.user.name}}</span>
+				    </div>
+		    	</div>
 			</div>
 		</div>
     </div>
