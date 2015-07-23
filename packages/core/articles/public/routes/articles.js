@@ -8,7 +8,7 @@ angular.module('mean.articles').config(['$stateProvider',
     $stateProvider
       .state('all articles', {
         url: '/articles',
-        templateUrl: '/articles/views/list.html',
+        templateUrl: '/articles/views/grid.html',
         resolve: {
           loggedin: function(MeanUser) {
             return MeanUser.checkLoggedin();
