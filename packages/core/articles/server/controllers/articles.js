@@ -90,10 +90,11 @@ module.exports = function(Articles) {
          * Show an article
          */
         show: function(req, res) {
-
-            Articles.events.publish('view', {
-                description: req.user.name + ' read ' + req.article.title + ' article.'
-            });
+        	
+        	if ((req.user) && (req.article))
+        		Articles.events.publish('view', {
+            		description: req.user.name + ' read ' + req.article.title + ' article.'
+        		});
 
             res.json(req.article);
         },
