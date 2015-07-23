@@ -21,7 +21,7 @@
 				      	</h2>
 			      	</div>
 					<br />
-			    	<div class="article_body">{{article.content}}</div>
+			    	<div class="article_body" ng-bind-html="article.content"></div>
 					<br />
 			    	<div class="panel-footer">
 					    <span>{{article.created | date:'medium'}}</span> /

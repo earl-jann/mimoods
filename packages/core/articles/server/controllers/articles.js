@@ -163,6 +163,24 @@ module.exports = function(Articles) {
 		                    });
 		        }
 		        
+//		        var showAggregateMoods = function(aggregateMoods) {
+//		        		//console.log('aggregateMoods entry ' + aggregateMoods);
+//		        		//var aggregateMoodsStr = JSON.stringify(aggregateMoods);
+//		        		var labelList = [];
+//		        		var dataList = [];
+//		        		//console.log('aggregateMoods stringify ' + aggregateMoodsStr);
+//		        		for(var i=0, dataLen = aggregateMoods.length; i<dataLen; i++){
+//		        			labelList.push(aggregateMoods[i]._id.mood);
+//		        			dataList.push(aggregateMoods[i].total);
+//		        		}   
+//		        		
+//		        		//console.log('labels: ' + labelList);
+//		        		//console.log('data: ' + dataList);
+//		        	
+//		        };
+//		        
+//		        showAggregateMoods(articleMoods);
+		        
 		        res.json(articleMoods)
 		    });
 		}

@@ -3,6 +3,7 @@
 
 angular.module('mean.articles' , ["chart.js"]).controller('ArticlesController', ['$scope', '$stateParams', '$location', 'Global', 'Articles', 'ArticleMoods', 'MeanUser', 'Circles',
   function($scope, $stateParams, $location, Global, Articles, ArticleMoods, MeanUser, Circles) {
+	console.log('ArticleMoods: ' + ArticleMoods);
     $scope.global = Global;
 
     $scope.hasAuthorization = function(article) {
@@ -87,7 +88,6 @@ angular.module('mean.articles' , ["chart.js"]).controller('ArticlesController', 
       Articles.get({
         articleId: $stateParams.articleId
       }, function(article) {
-    	  console.log('initialize findOne');
         $scope.article = article;
       });
     };
@@ -103,7 +103,7 @@ angular.module('mean.articles' , ["chart.js"]).controller('ArticlesController', 
 //  "mood": "NEUTRAL",
 //  "article": "55b0b4ffb2560c2f36a249ed"
 // },
-//"total": 1
+// "total": 1
     
 //    Array.prototype.mapProperty = function(property) {
 //       	return this.map(function (obj) {
@@ -112,24 +112,58 @@ angular.module('mean.articles' , ["chart.js"]).controller('ArticlesController', 
 //      };
 //      
 //      
-//    $scope.showAggregateMoods = function() {
-//    	ArticleMoods.get({
-//    		articleId: $stateParams.articleId
-//    	}, function(aggregateMoods) {
-//    		console.log('aggregateMoods entry');
-//    		$scope.labels = aggregateMoods.mapProperty('_id');
-//    		$scope.data = aggregateMoods.mapProperty('total');
-//    		console.log($scope.labels);
-//    		console.log($scope.data);
-//    	});
+//    
+//    
+//    var showAggregateMoods = function(aggregateMoods) {
+//    		console.log('aggregateMoods entry ' + aggregateMoods);
+//    		aggregateMoods = JSON.stringify(aggregateMoods);
+//    		var labelList = [];
+//    		var dataList = [];
+//    		
+//    		for(var i=0, dataLen = aggregateMoods.length; i<dataLen; i++){
+//    			labelList.push(aggregateMoods[i]._id);
+//    			dataList.push(aggregateMoods[i].total);
+//    		}
+//    		    
+//    		
+//    		console.log('labels: ' + labelList);
+//    		console.log('data: ' + dataList);
+//    	
 //    };
     
-    $scope.initialize = function() {
-    	console.log('initialize start');
-    	findOne();
-//    	showAggregateMoods();
-    	console.log('initialize end');
+    console.log(' $scope.showAggregateMoods start');
+    $scope.showAggregateMoods = function() {
+    	ArticleMoods.query({
+    		articleId: $stateParams.articleId
+    	}, function(aggregateMoods) {
+//    		console.log('aggregateMoods entry ' + aggregateMoods);
+//    		var aggregateMoodsStr = JSON.stringify(aggregateMoods);
+    		var labelList = [];
+    		var dataList = [];
+//    		console.log('aggregateMoods stringify ' + aggregateMoodsStr);
+    		for(var i=0, dataLen = aggregateMoods.length; i<dataLen; i++){
+    			labelList.push(aggregateMoods[i]._id.mood);
+    			dataList.push(aggregateMoods[i].total);
+    		}   
+    		
+//    		console.log('labels: ' + labelList);
+//    		console.log('data: ' + dataList);
+    		
+    		$scope.labels = labelList;
+    		$scope.data = dataList;
+    		
+//    		console.log('labels: ' + $scope.labels);
+//    		console.log('data: ' + $scope.data);
+    	});
     };
+    console.log(' $scope.showAggregateMoods end');
+    $scope.initializeMe = function() {
+//    	console.log('initialize start');
+    	$scope.showAggregateMoods();
+//    	console.log('initialize end');
+    };
+    
+    $scope.initializeMe();
 
       // PIE CHART
 //      $scope.labels = ["HAPPY", "SAD", "INSPIRED","ANGRY","ANNOYED","NEUTRAL","AFRAID"];

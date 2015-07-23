@@ -29,6 +29,7 @@ span.article_title {
 	color: gray;
 	font-family: "open_sans_hebrewregular";
 	font-size: 15px;
+	height: 200px; 
 }
 
 /* unvisited link */
