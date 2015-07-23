@@ -443,14 +443,14 @@ background: url("/theme/assets/img/grey-bg.jpg");
 .sign_login{
 	position: absolute;
 	left: 0%;
-	top: 147px;
+	top: 303px;
     pointer-events: none;
 }
 
 .sign_reg{
 	position: absolute;
 	left: 0%;
-	top: 334px;
+	top: 490px;
     pointer-events: none;
 }
 
