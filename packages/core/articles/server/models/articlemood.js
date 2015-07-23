@@ -34,7 +34,6 @@ ArticleMoodSchema.statics.load = function(id, cb) {
   this.findOne({
     _id: id
   })
-  .populate('user', 'email')
   .populate('article', 'title')
   .exec(cb);
 };

@@ -1,8 +1,8 @@
 'use strict';
 
 
-angular.module('mean.articles' , ["chart.js"]).controller('ArticlesController', ['$scope', '$stateParams', '$location', 'Global', 'Articles', 'MeanUser', 'Circles',
-  function($scope, $stateParams, $location, Global, Articles, MeanUser, Circles) {
+angular.module('mean.articles' , ["chart.js"]).controller('ArticlesController', ['$scope', '$stateParams', '$location', 'Global', 'Articles', 'ArticleMoods', 'MeanUser', 'Circles',
+  function($scope, $stateParams, $location, Global, Articles, ArticleMoods, MeanUser, Circles) {
     $scope.global = Global;
 
     $scope.hasAuthorization = function(article) {
@@ -87,36 +87,64 @@ angular.module('mean.articles' , ["chart.js"]).controller('ArticlesController', 
       Articles.get({
         articleId: $stateParams.articleId
       }, function(article) {
+    	  console.log('initialize findOne');
         $scope.article = article;
       });
     };
     
     // EDIT THIS PART
-    $scope.showMoodsByMonth = function(isValid) {
-        if (isValid) {
-          var article = $scope.article;
-          if (!article.updated) {
-            article.updated = [];
-          }
-          article.updated.push(new Date().getTime());
+//    $scope.findMoodsByMonth = function() {
+//    	 Articles.query(function(articles) {
+//    	        $scope.articles = articles;
+//    	 });
+//      };
+    
+//	"_id": {
+//  "mood": "NEUTRAL",
+//  "article": "55b0b4ffb2560c2f36a249ed"
+// },
+//"total": 1
+    
+//    Array.prototype.mapProperty = function(property) {
+//       	return this.map(function (obj) {
+//       		return obj[property];
+//       	});
+//      };
+//      
+//      
+//    $scope.showAggregateMoods = function() {
+//    	ArticleMoods.get({
+//    		articleId: $stateParams.articleId
+//    	}, function(aggregateMoods) {
+//    		console.log('aggregateMoods entry');
+//    		$scope.labels = aggregateMoods.mapProperty('_id');
+//    		$scope.data = aggregateMoods.mapProperty('total');
+//    		console.log($scope.labels);
+//    		console.log($scope.data);
+//    	});
+//    };
+    
+    $scope.initialize = function() {
+    	console.log('initialize start');
+    	findOne();
+//    	showAggregateMoods();
+    	console.log('initialize end');
+    };
 
-          article.$update(function() {
-            $location.path('articles/' + article._id);
-          });
-        } else {
-          $scope.submitted = true;
-        }
-      };
-
+      // PIE CHART
+//      $scope.labels = ["HAPPY", "SAD", "INSPIRED","ANGRY","ANNOYED","NEUTRAL","AFRAID"];
+//      $scope.data = [300, 500, 100, 55, 932, 213, 23];
     	
-	  $scope.labels = ["January", "February", "March", "April", "May", "June", "July"];
-	  $scope.series = ['Series A', 'Series B'];
-	  $scope.data = [
-	    [65, 59, 80, 81, 56, 55, 40],
-	    [28, 48, 40, 19, 86, 27, 90]
-	  ];
-	  $scope.onClick = function (points, evt) {
-	    console.log(points, evt);
-	  };
+    
+      // LINE CHART
+//	  $scope.labels = ["January", "February", "March", "April", "May", "June", "July"]; //
+//	  $scope.series = ['Series A', 'Series B']; // MOODS
+//	  $scope.data = [
+//	    [65, 59, 80, 81, 56, 55, 40],
+//	    [28, 48, 40, 19, 86, 27, 90]
+//	  ];
+//	  $scope.onClick = function (points, evt) {
+//	    console.log(points, evt);
+//	  };
   }
 ]);

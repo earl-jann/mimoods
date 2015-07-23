@@ -73,3 +73,11 @@ modules/views/
 # --------------------
 *.swp
 /.metadata/
+/local.0
+/local.ns
+/mean-dev.0
+/mean-dev.ns
+/meanio_architecture_diagram.png
+/mongod.lock
+/bower.json
+/.gitignore

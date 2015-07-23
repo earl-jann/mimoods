@@ -5,6 +5,7 @@
  */
 var mongoose = require('mongoose'),
     Article = mongoose.model('Article'),
+    ArticleMood = mongoose.model('ArticleMood'),
     _ = require('lodash');
 
 
@@ -123,6 +124,47 @@ module.exports = function(Articles) {
                 res.json(articles)
             });
 
-        }
+        },
+        /**
+         * List of Article Moods
+         */
+        moodsForArticle : function(req, res) {
+		    ArticleMood.find({ 'article' : new mongoose.Types.ObjectId(req.params.articleId)})
+		    .populate('article', 'title')
+			.sort('-created')
+			.exec(function(err, articleMoods) {
+		        if (err) {
+		            return res.status(500).json({
+		                error: 'Cannot list the article moods'
+		                    });
+		        }
+		        
+		        res.json(articleMoods)
+		    });
+		},
+        /**
+         * List of Article Moods
+         */
+        aggregateMoodsForArticle : function(req, res) {
+        	ArticleMood.aggregate([
+		                			{ $match: { 'article' : new mongoose.Types.ObjectId(req.params.articleId) } },
+		                			{	
+		                				$group : {
+		                					_id: { mood: "$mood", article: '$article' },
+		                					total: { $sum: 1 }
+		                				}
+		                			}
+		                		])
+			.exec(function(err, articleMoods) {
+				
+		        if (err) {
+		            return res.status(500).json({
+		                error: 'Cannot list the article moods'
+		                    });
+		        }
+		        
+		        res.json(articleMoods)
+		    });
+		}
     };
 }

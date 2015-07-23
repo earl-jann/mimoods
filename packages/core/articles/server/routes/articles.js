@@ -34,6 +34,12 @@ module.exports = function(Articles, app, auth) {
   .put(auth.isMongoId, auth.requiresLogin, hasAuthorization, hasPermissions, articles.update)
   .delete(auth.isMongoId, auth.requiresLogin, hasAuthorization, articles.destroy);
 
+  app.route('/api/articles/:articleId/moods')
+  .get(auth.isMongoId, articles.moodsForArticle);
+  
+  app.route('/api/articles/:articleId/aggregateMoods')
+  .get(auth.isMongoId, articles.aggregateMoodsForArticle);
+  
   // Finish with setting up the articleId param
   app.param('articleId', articles.article);
 };
