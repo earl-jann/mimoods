@@ -4,3 +4,66 @@ h1 {
 ul.articles li:not(:last-child) {
 	border-bottom: 1px solid #ccc
 }
+
+h2.article_title {
+	text-overflow: ellipsis;
+	overflow : hidden;
+	white-space: nowrap;
+	margin: 8px;
+	width: 60;
+	color: white;
+	font-family: "open_sans_hebrewregular";
+	font-size: 20px;
+}
+
+span.article_title {
+	color: #009999;
+}
+
+.article_body {
+	text-overflow: ellipsis;
+	overflow : hidden;
+	white-space: nowrap;
+	margin: 10px;
+	width: 100;
+	color: gray;
+	font-family: "open_sans_hebrewregular";
+	font-size: 15px;
+}
+
+/* unvisited link */
+a:link {
+    color: white;
+}
+
+/* visited link */
+a:visited {
+    color: white;
+}
+
+/* mouse over link */
+a:hover {
+    color: white;
+}
+
+/* selected link */
+a:active {
+    color: white;
+}
+
+div.panel-heading {
+	color: white;
+	background: url("/articles/assets/img/header-background.png");
+}
+
+body.articles {
+	background: url("/articles/assets/img/grey-bg.jpg");
+    color: gray;
+}
+
+.panel-footer {
+	background: url("/articles/assets/img/footer-background.png");
+	background-color: white;
+    color: gray;
+	font-size: 12px;
+}
