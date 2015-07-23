@@ -7,6 +7,15 @@ var mongoose = require('mongoose'),
     Article = mongoose.model('Article'),
     _ = require('lodash');
 
+
+//
+//angular.module('sanitize', ['ngSanitize'])
+//	.controller('ExampleController', ['$scope', function($scope) {
+//	  $scope.myHTML =
+//	     'I am an <code>HTML</code>string with ' +
+//	     '<a href="#">links!</a> and other <em>stuff</em>';
+//	}]);
+
 module.exports = function(Articles) {
 
     return {

@@ -55,7 +55,24 @@ Articles.register(function(app, auth, database, circles, swagger) {
       //you now have the settings object
     });
     */
-
+  
+  Articles.aggregateAsset('js', 'angular-chart.js', {
+      absolute: false,
+      global: true
+  });
+  
+  Articles.aggregateAsset('js', 'Chart.js', {
+      absolute: false,
+      global: true
+  });
+  
+  Articles.aggregateAsset('css', 'angular-chart.css', {
+      absolute: false,
+      global: true
+  });
+  
+  Articles.angularDependencies(['chart.js']);
+  
   // Only use swagger.add if /docs and the corresponding files exists
   swagger.add(__dirname);
 	
