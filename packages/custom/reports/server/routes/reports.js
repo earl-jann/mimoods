@@ -4,7 +4,7 @@
 // The Package is past automatically as first parameter
 module.exports = function(Reports, app, auth, database) {
 
-  app.get('/api/reports/example/anyone', function(req, res, next) {
+  app.get('/api/reports/moods_by_article', function(req, res, next) {
     res.send('Anyone can access this');
   });
 

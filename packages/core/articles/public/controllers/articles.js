@@ -1,6 +1,7 @@
 'use strict';
 
-angular.module('mean.articles').controller('ArticlesController', ['$scope', '$stateParams', '$location', 'Global', 'Articles', 'MeanUser', 'Circles',
+
+angular.module('mean.articles' , ["chart.js"]).controller('ArticlesController', ['$scope', '$stateParams', '$location', 'Global', 'Articles', 'MeanUser', 'Circles',
   function($scope, $stateParams, $location, Global, Articles, MeanUser, Circles) {
     $scope.global = Global;
 
@@ -89,5 +90,33 @@ angular.module('mean.articles').controller('ArticlesController', ['$scope', '$st
         $scope.article = article;
       });
     };
+    
+    // EDIT THIS PART
+    $scope.showMoodsByMonth = function(isValid) {
+        if (isValid) {
+          var article = $scope.article;
+          if (!article.updated) {
+            article.updated = [];
+          }
+          article.updated.push(new Date().getTime());
+
+          article.$update(function() {
+            $location.path('articles/' + article._id);
+          });
+        } else {
+          $scope.submitted = true;
+        }
+      };
+
+    	
+	  $scope.labels = ["January", "February", "March", "April", "May", "June", "July"];
+	  $scope.series = ['Series A', 'Series B'];
+	  $scope.data = [
+	    [65, 59, 80, 81, 56, 55, 40],
+	    [28, 48, 40, 19, 86, 27, 90]
+	  ];
+	  $scope.onClick = function (points, evt) {
+	    console.log(points, evt);
+	  };
   }
 ]);
