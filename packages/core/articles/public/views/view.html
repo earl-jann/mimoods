@@ -1,4 +1,5 @@
-<section data-ng-controller="ArticlesController" data-ng-init="findOne()">
+<section style="border:solid; border-color:gray; background-color:white" data-ng-controller="ArticlesController" data-ng-init="findOne()">
+  <div class="panel-heading">
   <span>{{article.created | date:'medium'}}</span> /
   <span>{{article.user.name}}</span>
   <h2>{{article.title}}</h2>
@@ -9,6 +10,7 @@
     <a class="btn" data-ng-click="remove(article);">
       <i class="glyphicon glyphicon-trash"></i>
     </a>
+  </div>
   </div>
   <div ng-bind-html="article.content"></div>
   <div>
