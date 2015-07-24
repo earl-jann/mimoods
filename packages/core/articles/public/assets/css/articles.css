@@ -11,7 +11,7 @@ h2.article_title {
 	white-space: nowrap;
 	margin: 8px;
 	width: 60;
-	color: white;
+	color: #006666;
 	font-family: "open_sans_hebrewregular";
 	font-size: 20px;
 }
@@ -34,32 +34,27 @@ span.article_title {
 
 /* unvisited link */
 a:link {
-    color: white;
+    color: #006666;
 }
 
 /* visited link */
 a:visited {
-    color: white;
+    color: #006666;
 }
 
 /* mouse over link */
 a:hover {
-    color: white;
+    color: #006666;
 }
 
 /* selected link */
 a:active {
-    color: white;
+    color: #006666;
 }
 
 div.panel-heading {
 	color: white;
 	background: url("/articles/assets/img/header-background.png");
-}
-
-body.articles {
-	background: url("/articles/assets/img/grey-bg.jpg");
-    color: gray;
 }
 
 .panel-footer {
