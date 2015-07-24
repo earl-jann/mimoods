@@ -57,17 +57,17 @@ Articles.register(function(app, auth, database, circles, swagger) {
     */
   Articles.aggregateAsset('js', 'Chart.js', {
       absolute: false,
-      global: true
+      global: false
   });
   
   Articles.aggregateAsset('js', 'angular-chart.js', {
       absolute: false,
-      global: true
+      global: false
   });
   
   Articles.aggregateAsset('css', 'angular-chart.css', {
       absolute: false,
-      global: true
+      global: false
   });
   
   Articles.angularDependencies(['chart.js']);

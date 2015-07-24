@@ -47,6 +47,23 @@ Reports.register(function(app, auth, database) {
         //you now have the settings object
     });
     */
+ 
+  Reports.aggregateAsset('js', 'Chart.js', {
+      absolute: false,
+      global: false
+  });
+  
+  Reports.aggregateAsset('js', 'angular-chart.js', {
+      absolute: false,
+      global: false
+  });
+  
+  Reports.aggregateAsset('css', 'angular-chart.css', {
+      absolute: false,
+      global: false
+  });
+  
+  Reports.angularDependencies(['chart.js']);
 
   return Reports;
 });
