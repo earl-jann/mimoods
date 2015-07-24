@@ -42,6 +42,13 @@ footer p {
 	padding: 5px 0 12px 10px
 }
 
+body {
+background: url("/theme/assets/img/grey-bg.jpg");
+    height: 100%;
+    position: relative;
+
+}
+
 .featuredpic img{
   width:510px;
 }
